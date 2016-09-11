@@ -1,0 +1,24 @@
+// Script para alertar sobre o captcha -->  faz a leitura das palavras
+
+function SetForegroundWindow(hwnd: integer) : Boolean; stdcall;
+    external 'user32.dll';
+
+    function captcha:boolean; begin
+             if engine.dlgtext.contains('Refresh') or //le se aparece na tela um dialogo com o texto Refresh
+             engine.dlgtext.contains('Captcha') or //le se aparece na tela um dialogo com o texto Refresh
+             engine.dlgtext.contains('60 seconds') or //le se aparece na tela um dialogo com o texto Refresh
+             engine.dlgtext.contains('Bot')   then begin  //le se aparece na tela um dialogo com o texto Refresh
+       SetForegroundWindow(Engine.GameWindow);             
+      PlaySound(exepath+'\sounds\'+'PlayerAlarm'+'.wav');
+      delay(500);  // tempo a cada som
+      StopSound;
+          end;   
+  end;
+begin
+  while true do begin
+  delay(300);
+   captcha();
+end;
+end.
+
+// BY Sonyzin
