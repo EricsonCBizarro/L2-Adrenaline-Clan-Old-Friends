@@ -1,0 +1,39 @@
+// Script mais avançado ainda em test
+
+function keybd_event(bVk,bScan:byte;dwFlags,dwExtraInfo: integer): integer;  stdcall; external 'user32.dll';
+function SetCursorPos(x, y : integer): boolean; stdcall; external 'user32.dll';
+function mouse_event(dwFlags, dx, dy, dwData: byte; dwExtraInfo: integer): void; stdcall; external 'user32.dll';
+
+procedure pressKey(hexCode: BYTE);
+begin
+  keybd_event(hexCode, 45, 1, 0 );
+  delay(200);
+end;
+
+procedure mouseClick(x, y, _delay : integer); 
+begin
+SetCursorPos(x, y);
+mouse_event($0002, 0, 0, 0, 0);
+delay(_delay);
+mouse_event($0004, 0, 0, 0, 0);
+end;
+
+procedure augments;
+var obj: TL2Effect;
+begin
+while 
+(SkillList.ByID(3124, obj)) or
+(SkillList.ByID(3259, obj)) do delay(3000);
+end;
+
+begin
+while Engine.Status = lsOnline do begin
+delay(100);
+mouseClick(403,726,400);	///mouse click
+SetCursorPos(133, 339);		///mouse move
+pressKey($62);			///press key 2
+pressKey($65);			///press key 5 for add gemstone count
+delay(500);
+augments;			///and check procedure augments for skill detect
+end;
+end.
