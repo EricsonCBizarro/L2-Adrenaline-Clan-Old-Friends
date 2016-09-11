@@ -1,0 +1,26 @@
+// class para checar buff e usar scape caso nao tiver
+
+procedure toBuff;
+  begin
+  IdBuff:=1323 ;  //Check BUFF
+   while not User.Buffs.ById(IdBuff,obj) do begin
+        Print('Check Buff');
+        Engine.UseItem(736);  //Scroll Escape
+        Delay(7000);
+        //buff;  // chama class de buff -- retirar comentario "//"
+   end;
+end;
+
+// class para checar buff
+
+// class para checar buff
+
+procedure toBuff;
+  begin
+  IdBuff:=1323 ;  //Check BUFF
+   while not User.Buffs.ById(IdBuff,obj) do begin
+        Print('Check Buff');
+        Delay(7000);  // tempo de espera para 
+        //buff;    // chama class de buff
+   end;
+end;
