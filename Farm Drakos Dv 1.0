@@ -29,9 +29,10 @@ begin
     delay(300);
     Engine.BypassToServer('_bbsbuffer');
     delay(300);
-    Engine.BypassToServer('_bbsbufferbypass_giveBuffSet mage 0 0');
+    Engine.BypassToServer('_bbsbufferbypass_cast 774 x x');
    RunTo;
 end;
+
 
 procedure RunTo;
 begin
