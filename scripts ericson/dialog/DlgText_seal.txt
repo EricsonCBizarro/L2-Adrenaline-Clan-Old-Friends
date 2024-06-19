@@ -1,0 +1,20 @@
+<html><body><html noscrollbar>
+<head>
+    <title>Captcha</title>
+</head>
+<body>
+<center>
+    <font color=3097BF>You have 40 seconds to Enter Captcha</font><br1>
+	<font color=A72E26>Enter What you see in the picture:</font>
+    <img src="Crest.crest_3_1922599115" width=256 height=64>
+	<table width=250>
+	<tr>
+		<td align="center"><multiedit var="name" width=200 height=50></td>
+	</tr>
+	<tr>
+		<td align="center" width=125> <button value="Answer" action="bypass -h 10 $name" width=125 height=26 back="L2UI_CT1.Button_DF_Down" fore="L2UI_ct1.button_df"></td>
+	</tr>	
+	</table>
+</center>
+</body>
+</html></body></html>

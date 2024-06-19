@@ -1,0 +1,74 @@
+//level 7-20 
+       if ((User.Level>6) and (User.Level<20)) then begin
+
+	   //TP orcbaracks
+	   while not (user.InRange(-90494, 108207, -3552, 500)) do begin
+          
+          Engine.BypassToServer('_bbshome', True);
+delay(1500);
+   Engine.BypassToServer('_bbsgatekeeper', True);
+   delay(1500);
+    Engine.BypassToServer('_bbsgatekeeper_main-12.htm', True);
+   delay(1500);
+  Engine.BypassToServer('14', True);
+        delay(1000);
+   end;
+//koniec TP orcbaracks
+
+         
+
+               engine.loadzone('OrcBaracks'); 
+   delay(500);
+   Engine.FaceControl(0,true);
+
+    
+
+
+
+   
+                           
+                            
+   while (User.InRange(-90440, 108104, -3552, 5000)) do begin
+            delay(500);
+
+                      captcha();
+                      checkdead();
+                      checkbuff();
+
+                  if (User.Level>19) then begin
+
+
+
+                  engine.loadzone('Zero'); 
+                 
+                  while user.incombat do delay(1000);
+                 Engine.FaceControl(0,false);
+                 Print('LEVEL 20 ZMIENIAM SPOT');
+
+                      captcha();
+                      checkdead();
+                      checkbuff();
+                   
+
+                 //tp do aden 
+	while not (user.InRange(146217, 25191, -1992,500)) do begin
+	delay(1000);
+	Engine.BypassToServer('_bbshome', True);
+delay(1500);
+   Engine.BypassToServer('_bbsgatekeeper', True);
+   delay(1500);
+    Engine.BypassToServer('16', True);
+   delay(1500);
+   end;
+//koniec tp aden
+
+                      captcha();
+                      checkdead();
+                      checkbuff();
+
+
+                       end;
+                   
+                  end;
+        end;
+               //koniec level 6-20

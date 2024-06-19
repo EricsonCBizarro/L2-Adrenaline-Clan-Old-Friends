@@ -1,0 +1,104 @@
+var Figth_Flag:boolean;
+     Item: TL2Item;
+     Npc: TL2Npc;
+     Obj: TL2Buff;
+     IdBuff: integer;
+     Buffs:TL2Buff;
+var L2Skill: TL2Skill;
+
+
+procedure toVillage;
+begin
+  Delay(100);
+    if (User.HP=0) then
+      begin
+       Delay(2000);
+       Engine.GoHome;
+       Engine.Facecontrol(0,False);
+       Buff;
+      end;
+end;
+
+// rebuffa - isso muda conforme o server
+procedure buff;
+begin
+    Delay (10000);
+    Engine.BypassToServer('_bbshome');
+    delay(300);
+    Engine.BypassToServer('01');
+    delay(300);
+    Engine.BypassToServer('09');
+    delay(300);
+    Engine.BypassToServer('01a');
+    delay(300);
+    Engine.BypassToServer('_bbsgetfav');
+   RunTo;
+end;
+
+
+procedure RunTo;
+begin
+     Engine.BypassToServer('_bbshome');
+     delay(300);
+     Engine.BypassToServer('01');
+     delay(300);
+     Engine.BypassToServer('0a');
+     delay(300);
+     Engine.BypassToServer('029');
+     delay(300);
+     Engine.BypassToServer('0e');
+     delay(300);
+     Engine.BypassToServer('_bbsgetfav');
+     delay(300);
+     Fight;
+end;
+
+
+procedure toBuff;
+  begin
+  IdBuff:= 1323 ; //Check BUFF               '''''''''''''''
+   while not User.Buffs.ById(IdBuff,obj) do begin
+        Print('Sem Nobles');
+        Engine.UseItem(736);  //Scroll Escape
+        Delay(20000);
+        Engine.Facecontrol(0,False);
+        buff;
+   end;
+end;
+
+
+procedure Fight;
+   begin
+  // Print('Fight zone');
+  //  Engine.MoveTo(73832, 117736, -3744);
+ //   Print('Primeira Zona');
+ //   Delay(1000);
+ //   Engine.MoveTo(75112, 117560, -3752);
+ //   Print('Segunda Zona');
+ //   Delay(1000);
+ //   Engine.MoveTo(77704, 116968, -3800);
+ //   Print('Terceira Zona');
+ //   Delay(1000);
+ //   Engine.MoveTo(79880, 116296, -3648);
+ //   Delay(1000);
+ //   Print('Quarta Zona');
+ //   Engine.MoveTo(82728, 117288, -3056);
+    Delay(1000);
+    Print('Na Catacumba');
+    Engine.LoadConfig('Sonyzin');    //COLOCA NOME DO CHAR AQUI
+    Engine.LoadZone('Drakosprimeirasubida.zmap');   //NOME DA ZONA DO MAPA AQUI
+    Print('FEITO!');
+    toVillage;
+    Engine.Facecontrol(0,True);
+end;
+
+
+//-----------------------------------------------------------------------------
+begin    //repete novamente o script
+Print('repete novamente');
+  repeat
+   toBuff;
+   toVillage;
+  until Engine.Status = lsOffline;
+  Delay(5000);
+end.

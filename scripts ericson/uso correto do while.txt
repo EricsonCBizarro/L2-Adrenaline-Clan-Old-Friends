@@ -1,0 +1,13 @@
+Correct syntax of "while" is:
+
+while not User.Dead do
+ begin
+
+   delay(150);
+   
+    //your code here
+    //your code here
+    //your code here
+    //your code here
+
+ end;

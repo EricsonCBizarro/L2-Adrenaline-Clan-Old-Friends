@@ -1,0 +1,7 @@
+begin
+while delay(555) do begin
+if (ChatMessage.Text = '102030') and ChatMessage.Unread then
+if (ChatMessage.ChatType = ctPrivate) then
+Engine.InviteParty(chatmessage.sender);
+end;
+end.

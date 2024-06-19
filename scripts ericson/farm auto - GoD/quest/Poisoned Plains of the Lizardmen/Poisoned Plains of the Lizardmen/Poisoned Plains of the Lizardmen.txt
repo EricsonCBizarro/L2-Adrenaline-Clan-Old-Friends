@@ -1,0 +1,271 @@
+var
+  qitem: TL2Item;
+
+  const
+  ItemID = 10226;  // Icarus bow
+
+procedure Disarm;
+var
+  item: TL2Item;
+
+begin
+    if inventory.user.byid(ItemID, item) and not (Item.Equipped)
+      then
+       begin
+          Engine.UseItem(ItemID);
+          delay(2000);
+  end;
+end;
+
+
+procedure startquest;
+begin
+  Engine.MoveTo(86504, 86072, -2864);
+  delay(500);
+  engine.settarget(32741);
+  engine.dlgopen;
+  engine.dlgsel('Quest');
+  delay(500);
+  engine.dlgsel(1);
+  delay(500);
+  engine.dlgsel(1);
+  delay(1000);
+  Engine.MoveTo(86520, 85816, -2872);
+  delay(500);
+  engine.settarget(32744);
+  engine.dlgopen;
+  delay(500);
+  engine.dlgsel('Quest');
+  delay(500);
+  engine.dlgsel(1);
+  delay(500);
+  engine.dlgsel(1);
+  delay(500);
+  engine.dlgsel(1);
+end;
+
+procedure tospot;
+begin
+  Engine.MoveTo(88584,85768,-3152);
+  Engine.MoveTo(89448,85176,-3312);
+  Engine.useskill(628);
+  Engine.MoveTo(90376,84456,-3504);
+  Engine.useskill(628);
+  Engine.MoveTo(90936,83944,-3568);
+  Engine.useskill(628);
+  Engine.MoveTo(92360,81912,-3504);
+  Engine.useskill(628);
+  Engine.MoveTo(93032,79896,-3312);
+  delay(1000);
+  Engine.LoadZone(exepath+'\Settings\'+'farming spot'+'.zmap');
+  Engine.LoadConfig('arba');
+  Engine.FaceControl(0,true);
+end;
+procedure toraid;
+begin
+  Engine.MoveTo(93240,80104,-3312);
+  Engine.MoveTo(93912,81224,-3360);
+  Engine.MoveTo(94152,82296,-3520);
+  Engine.MoveTo(94616,83528,-3424);
+  Engine.MoveTo(94840,83560,-3408);
+end;
+procedure toraidtp;
+begin
+  Engine.MoveTo(92728, 81320, -3408);
+  Engine.MoveTo(93336, 82104, -3480);
+  Engine.MoveTo(93752, 82504, -3488);
+  Engine.MoveTo(93736, 82520, -3488);
+  Engine.MoveTo(94712, 83544, -3424);
+  Engine.MoveTo(94776, 83560, -3408);
+end;
+procedure raidas;
+begin
+  Engine.MoveTo(88264,85592,-3136);
+  Engine.MoveTo(88936,85528,-3200);
+  Engine.MoveTo(89960,84904,-3440);
+  Engine.MoveTo(94232,83368,-3520);
+  Engine.MoveTo(94664,83528,-3424);
+  Engine.MoveTo(94824,83576,-3408);
+end;
+procedure outrb;
+begin
+  Engine.FaceControl(0,false);
+  engine.settarget(32740);
+  engine.movetotarget;
+  engine.dlgopen;
+  engine.dlgsel(1);
+  delay(2000);
+end;
+procedure tpafterrb;
+begin
+engine.bypasstoserveR('_bbshome');
+delay(999);
+engine.bypasstoserveR('02');
+delay(999);
+engine.bypasstoserveR('00');
+delay(500);
+engine.bypasstoserver('01a');
+delay(500);
+engine.bypasstoserver('02');
+  delay(1200);
+  Engine.MoveTo(86744, 85832, -2912);
+  Engine.MoveTo(86568, 85912, -2872);
+  Engine.MoveTo(86504, 86088, -2864);
+  delay(500);
+  engine.settarget(32741);
+  engine.dlgopen;
+  engine.dlgsel('Quest');
+  delay(500);
+  engine.dlgsel(1);
+end;
+procedure floran;
+begin
+engine.bypasstoserveR('_bbshome');
+delay(999);
+engine.bypasstoserveR('02');
+delay(999);
+engine.bypasstoserveR('00');
+delay(500);
+engine.bypasstoserver('01a');
+delay(500);
+engine.bypasstoserver('02');
+end;
+procedure teleport;
+begin
+engine.bypasstoserveR('_bbshome');
+delay(999);
+engine.bypasstoserveR('02');
+delay(999);
+engine.bypasstoserveR('00');
+delay(500);
+engine.bypasstoserver('01a');
+delay(500);
+engine.bypasstoserver('02');
+end;
+procedure takeandtele;
+begin
+  engine.settarget(32740);
+  engine.dlgopen;
+  delay(500);
+  engine.dlgsel('Quest');
+  delay(500);
+  engine.dlgsel(1);
+  delay(1000);
+  engine.dlgopen;
+  engine.dlgsel(2);
+  delay(100);
+  Engine.LoadZone(exepath+'\Settings\'+'raidboss'+'.zmap');
+  Engine.LoadConfig('arba1');
+  Engine.FaceControl(0,true);
+end;
+procedure endquest;
+begin
+  Engine.MoveTo(86744, 85832, -2912);
+  Engine.MoveTo(86568, 85912, -2872);
+  Engine.MoveTo(86504, 86088, -2864);
+  delay(500);
+  engine.settarget(32741);
+  engine.dlgopen;
+  engine.dlgsel('Quest');
+  delay(500);
+  engine.dlgsel(1);
+end;
+
+function buffCheck: Boolean;
+var buff: TL2Buff;
+begin
+    if not User.Buffs.ByID(1388, buff) or (buff.EndTime < 1800000) then
+    begin
+        Result:=true;
+        Print('Buffs are needed. Buffing...');
+        Engine.MoveTo(86456, 86360, -2864);
+        Delay(500);
+        engine.bypasstoserver('_bbshome');
+        delay(500);
+        engine.bypasstoserver('01');
+        delay(500);
+        engine.bypasstoserver('0d');
+        delay(500);
+        engine.bypasstoserver('0b');
+        delay(500);
+        Print('Buffed.');
+        Engine.MoveTo(86536, 85800, -2880);
+    end;
+    Result:=false;
+end;
+
+procedure quest;
+var buff:tl2buff;
+item: tl2item;
+begin
+  if(User.Dead) then
+  begin
+	  Print('Dead. Pressing to village.');
+		Engine.FaceControl(0, false);
+		Engine.GoHome;
+  end;
+  
+if User.inrange(86504, 86072, -2864, 5250) or User.inrange(82950,53186,-1494, 5250) then begin
+buffCheck;
+end;
+if User.inrange(86504, 86072, -2864, 250) and (not Engine.QuestStatus(288, 1)) then begin
+startquest;
+end;
+if user.inrange(87192, 85624, -3056, 1250) and (Engine.QuestStatus(423, 1)) then begin
+tospot;
+end;
+if (Engine.QuestStatus(423, 2)) then begin
+Engine.FaceControl(0,false);
+toraid;
+end;
+if user.inrange(87128, 85672, -3032, 700) and (Engine.QuestStatus(423, 2)) then begin       // killed guard, died on move to raid
+Engine.FaceControl(0,false);
+toraidtp;
+end;
+if user.inrange(93032,79896,-3312, 2700) and (Engine.QuestStatus(423, 2)) then begin       // proverka q
+Engine.FaceControl(0,false);
+toraid;
+end;
+if user.inrange(45784, 49560, -3040, 5000) then begin          // elf village
+floran;
+end;
+if user.inrange(17088, 170173, -3488, 2000) then begin          // floran
+floran;
+end;
+if user.inrange(11432, 16776, -4640, 5000) then begin          // dark elf village 
+floran;
+end;  
+if user.inrange(94824, 83576, -3408, 250) and (Engine.QuestStatus(423, 2)) then begin    //// kai uzmusa guard
+takeandtele;                 
+end;
+if User.inrange(96680, 85512, -3712, 1500) and (Engine.QuestStatus(288, 3)) or (Engine.QuestStatus(288, 2))  and
+((Inventory.Quest.ByID(15497, qitem) = true) or (Inventory.Quest.ByID(15498, qitem) = true)) 
+then begin   /// kai rb dead
+outrb;                                              
+end;
+if User.inrange(82950,53186,-1494, 5250) then begin //// mieste 
+teleport;
+end;
+if User.inrange(87210, 85434, -3072, 800) and (Engine.QuestStatus(288, 3))  then begin   print('svx1');// on tp 
+endquest;
+end;
+if user.inrange(94224, 83019, -3552, 2000) and (Engine.QuestStatus(288, 3)) or (Engine.QuestStatus(288, 2))  and   
+((Inventory.Quest.ByID(15497, qitem) = true) or (Inventory.Quest.ByID(15498, qitem) = true))  then begin 
+tpafterrb;
+end;
+if user.inrange(87214, 85547, -3056, 250) and (Engine.QuestStatus(423, 1)) then begin
+tospot;
+end;
+if User.inrange(87214, 85547, -3056, 250) and (not Engine.QuestStatus(288, 1)) then begin
+startquest;
+end;
+end;
+begin
+while delay(1000) do begin
+Script.NewThread(@Disarm); delay(1000);
+delay(300);
+quest();
+delay(300);
+delay(300);
+end;
+end.

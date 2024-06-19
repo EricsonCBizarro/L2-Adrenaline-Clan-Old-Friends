@@ -1,0 +1,106 @@
+var MP, Shot: TL2Item;
+buff: TL2Buff;
+function buffCheck: Boolean;
+begin
+    if (not User.Buffs.ByID(1062, buff) or (buff.endtime<300000)) then begin //1062 wich buff id checking
+        Result:=true;
+        Delay(1000);
+        Engine.BypassToServer('_bbshome');    //buffer alt and b
+        Delay(1000);
+        Engine.BypassToServer('02');
+        Delay(1000);
+        Engine.BypassToServer('0b');
+        Delay(1000);
+        Engine.BypassToServer('0c');
+        Delay(1000);
+        Engine.BypassToServer('018');
+        Delay(1000);
+        Engine.BypassToServer('018');
+        Delay(1000);
+    end;
+Result:=false;
+end;
+
+function BuyMP:boolean;
+begin
+if not Inventory.User.ByID(728, MP) or (MP.count<10) then begin //728 mp id ,10 or less then buy MP so probably change it for your count
+result:=true;
+        Delay(1000);
+        Engine.BypassToServer('_bbshome'); // alt and b codes to buy mp
+        Delay(1000);
+        Engine.BypassToServer('02');
+        Delay(1000);
+        Engine.BypassToServer('0c');
+        Delay(1000);
+        Engine.BypassToServer('01f');
+        Delay(1000);
+        Engine.NpcExchange(728, 2);  //728 mp id, 2 is count how many buy it
+        delay(1000);
+        end;
+        result:=false;
+end;
+
+function BuyShot:boolean;
+begin
+if not Inventory.User.ByID(1463, Shot) or (Shot.count<900) then begin //1463 is d grade shot id, change for your shot id, 900 or less then buy shots
+result:=true;
+        Delay(1000);
+        Engine.BypassToServer('_bbshome');    //alt and b to shots
+        Delay(1000);
+        Engine.BypassToServer('02');
+        Delay(1000);
+        Engine.BypassToServer('0c');
+        Delay(1000);
+        Engine.BypassToServer('020');
+        Delay(1000);
+        Engine.NpcExchange(1463, 50);   //1463 id, 50 is count wich buy
+        delay(1000);
+        end;
+        result:=false;
+end;
+
+
+function deadCheck: Boolean;
+begin
+Result := false;
+    if User.Dead then begin
+        Result := true;
+        Print('Dead. Pressing to village.');
+        Delay(1000);
+        Engine.FaceControl(0,false);
+        Engine.GoHome;
+        Delay(10000);
+    end;
+end;
+
+begin
+while true do begin
+delay(150);
+                    //town coordinates     range                 //buff id wich check                        //shot id                              //mp id
+    if user.inrange(-83064, 150600, -3104, 5000) and User.Buffs.ByID(1062, buffCheck) and Inventory.User.ByID(1463, BuyShot) and Inventory.User.ByID(728, BuyMP) then begin
+        Print('Teleport.');
+        delay(1000);
+        Engine.BypassToServer('_bbshome'); //alt and b where teleport
+        delay(1000);
+        Engine.BypassToServer('02');
+        delay(1000);
+        Engine.BypassToServer('0a');
+        delay(1000);
+        Engine.BypassToServer('031');
+        delay(1000);
+        Engine.BypassToServer('0a');
+        Delay(10000);
+    end;                      
+                             
+    if user.inrange(-41555, 210012, -5064, 300) then begin  //coordinates after teleport
+        Print('Moving');
+        Engine.MoveTo(-41608, 210904, -5064);      //path to spot
+        Engine.MoveTo(-41752, 210984, -5064);
+        Engine.MoveTo(-42696, 210984, -5064);
+        Print('ON!');
+        Delay(500);
+        Engine.FaceControl(0, true);  //turn on bot
+        while not deadCheck do delay(1000); //while not dead, do nothing and wait.
+    end;
+end;
+end.

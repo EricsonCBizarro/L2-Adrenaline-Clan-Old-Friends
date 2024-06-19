@@ -1,0 +1,105 @@
+var 
+L2Skill: TL2Skill; 
+skill1: TL2Skill; 
+skill2: TL2Skill; 
+skill3: TL2Skill; 
+skill4: TL2Skill; 
+NovObj: TL2Skill; 
+NovEngine: TL2Control; 
+buff: TL2Buff; 
+function keybd_event (bVk, bScan: byte; dwFlags, dwExtraInfo: integer): integer ; stdcall; external
+ 'user32.dll'; 
+function SetCursorPos (x, y: integer): boolean; stdcall; external 'user32.dll'; 
+function mouse_event (dwFlags, dx, dy, dwData: byte; dwExtraInfo: integer): void; stdcall; external 
+'user32.dll'; 
+function GetSkill (const Control: String; const ID: Cardinal): TL2Skill; 
+
+begin 
+NovEngine:= GetControl (control); 
+if Assigned (NovEngine) and NovEngine.GetSkillList.ByID (ID, NovObj) then 
+Result := NovObj; 
+delay (10000) 
+end; 
+
+procedure pressKey (hexCode: BYTE); 
+begin   
+keybd_event (hexCode, 45, 1, 0);   
+delay (200); 
+end; 
+
+procedure mouseClick (x, y, _delay: integer); 
+begin   
+SetCursorPos (x, y);   
+mouse_event ($2, 0, 0, 0, 0);   
+delay (_delay);   
+mouse_event ($4, 0, 0, 0, 0); 
+end; 
+
+procedure mouseDown (x, y, _delay: integer ); 
+begin   
+SetCursorPos (x, y);   
+mouse_event ($2, 0, 0, 0, 0);   
+// delay (_delay);   
+// mouse_event ($ 4, 0, 0, 0, 0); 
+end; 
+
+procedure mouseUp ( x, y, _delay: integer); 
+begin   
+SetCursorPos (x, y);   
+// mouse_event ($ 2, 0, 0, 0, 0);   
+// delay (_delay);   
+mouse_event ($4, 0, 0, 0, 0 ); 
+end; 
+// coordinate of the higher edge of the box augmentation \\ \\ 486 144 
+// coordinate of the higher edge of the box cancel \\ \\ 485 413 
+// coordinate of the higher edge of the box inventory \\ 1165 \\ 165 
+// active REFRESH 3199 // Reflect active 3204 // virgin 3158 
+// active PvP Mait 3134 // Passive Reflect 3259 // active refresh2 3202 
+// weight limit 3251 // Passive pvp Mait 3243 
+begin 
+delay (10000); 
+while 1 <> 2 do begin
+mouseClick (803, 695, 200);
+delay (1200);
+if (SkillList.ByID (3259, skill1)) then begin
+while 1 <> 2 do begin
+if ((SkillList.ByID (3259, skill1)) or (SkillList.ByID (3204, skill1))) then begin 
+PlaySound (exepath + '\ sounds \' + 'dc' + '.wav', False); delay ( 5000); 
+end;
+end;
+end;
+if (not SkillList.ByID (3259, skill1)) then begin // remove augment      
+mouseClick (803, 695, 200);
+delay (1000); 
+mouseDown (1165, 165, 1000); // click on the feathers (coordinate location puhi. it must necessarily be in the hands of)      
+delay (300);      
+mouseUp (493, 422, 1000); // Fluff drag the window aukmenta cancellation and release      
+delay (300);      
+mouseClick (448, 551, 200); // Confirm cancellation augment (augment cancel confirmation button)      
+delay (3000); // Waiting for the augmentation      
+mouseClick (448, 551, 200); // Push for the next augmentation (after HP pulled out)      
+delay (300); // insert the new augment      
+mouseDown (1165, 165, 1000); // click on the feathers (coordinate location puhi. it must necessarily be in the hands of)      
+delay (300);      
+mouseUp (482, 143, 1000); // Aukmenta drag the window and release      
+delay (300);      
+mouseDown (1061, 276, 1000); // click on the LAN      
+delay (300);      
+mouseUp (567, 146, 1000); // Aukmenta drag the window and release      
+delay (300);      
+mouseDown (1093, 277, 1000); // click on gemston      
+delay (300);      
+mouseUp (527, 187, 1000); // Aukmenta drag the window and release      
+delay (300);      
+mouseClick (465, 307, 200); // Confirm augment      
+delay (4300); // Waiting for the augmentation
+mouseClick (522, 182, 200); // Push for the next augmentation      
+delay (1000);
+mouseClick (465, 307, 200); // Push for the next augmentation      
+delay (300);
+end; 
+if ((SkillList.ByID (3259, skill1)) or (SkillList.ByID (3204, skill1))) then begin 
+PlaySound (exepath + '\ sounds \' + 'dc' + '.wav', False); delay ( 5000); 
+end; 
+end; 
+end. 

@@ -1,0 +1,7 @@
+begin
+Engine.BypassToServer('_bbshome');
+delay(300);
+Engine.BypassToServer('_bbsgatekeeper');
+delay(300);
+Engine.BypassToServer('12a');
+end.

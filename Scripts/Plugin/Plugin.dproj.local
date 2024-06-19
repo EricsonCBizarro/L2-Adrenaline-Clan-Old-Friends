@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2015.05.10 09:21:47.283.pas,C:\Users\User\Documents\RAD Studio\Projects\Unit3.pas=C:\Users\User\Desktop\AABox\Plugins\Unit3.pas</Transaction>
+    <Transaction>2015.05.10 09:21:47.283.dfm,C:\Users\User\Documents\RAD Studio\Projects\Unit3.dfm=C:\Users\User\Desktop\AABox\Plugins\Unit3.dfm</Transaction>
+    <Transaction>2015.05.10 09:22:22.526.dproj,C:\Users\User\Documents\RAD Studio\Projects\Project3.dproj=C:\Users\User\Desktop\AABox\Plugins\Plugin.dproj</Transaction>
+    <Transaction>2015.05.10 09:22:49.123.pas,C:\Users\User\Desktop\AABox\Plugins\Unit3.pas=C:\Users\User\Desktop\AABox\Plugins\Unit1.pas</Transaction>
+    <Transaction>2015.05.10 09:22:49.123.dfm,C:\Users\User\Desktop\AABox\Plugins\Unit3.dfm=C:\Users\User\Desktop\AABox\Plugins\Unit1.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

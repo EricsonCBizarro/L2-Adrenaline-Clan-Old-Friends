@@ -1,0 +1,23 @@
+procedure burn (p: pointer);
+var
+P1, P2 : pointer;
+Actor: TL2Live;
+begin
+try
+    while Engine.Status = lsOnline do begin
+        Engine.WaitAction([laCast], P1, P2);
+        Actor := TL2Live(P1);
+        if (not (Actor.IsMember) and (Actor.Cast.ID = 123) and (User.DistTo(Actor)<900)) then
+            begin
+            if Engine.SetTarget(Actor.Name) then
+                Engine.UseSkill(3110); //mana burn
+            end;
+    end;
+except
+    print ('ProtectCaster error');
+end;
+end;
+
+begin
+Script.NewThread(@burn);
+end.

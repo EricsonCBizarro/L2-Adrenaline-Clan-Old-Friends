@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<zone>
+	<ExternalPoly>
+		<points>
+			<point x="-90875" y="100858"/>
+			<point x="-89655" y="104886"/>
+			<point x="-88824" y="105811"/>
+			<point x="-88248" y="105972"/>
+			<point x="-87377" y="105663"/>
+			<point x="-87658" y="105342"/>
+			<point x="-87591" y="105127"/>
+			<point x="-87243" y="105087"/>
+			<point x="-86894" y="104752"/>
+			<point x="-86220" y="105508"/>
+			<point x="-85443" y="105586"/>
+			<point x="-85477" y="106234"/>
+			<point x="-86393" y="106208"/>
+			<point x="-85666" y="106994"/>
+			<point x="-85345" y="106590"/>
+			<point x="-84669" y="106289"/>
+			<point x="-84890" y="105750"/>
+			<point x="-85961" y="104981"/>
+			<point x="-86050" y="103734"/>
+			<point x="-85889" y="103184"/>
+			<point x="-87145" y="99678"/>
+		</points>
+	</ExternalPoly>
+	<InternalPolies>
+		<poly>
+			<points>
+				<point x="-88830" y="102832"/>
+				<point x="-88778" y="103125"/>
+				<point x="-88608" y="103137"/>
+				<point x="-88347" y="102923"/>
+				<point x="-88129" y="102947"/>
+				<point x="-88038" y="102769"/>
+				<point x="-87876" y="102998"/>
+				<point x="-87931" y="102666"/>
+				<point x="-88101" y="102172"/>
+				<point x="-88677" y="102250"/>
+				<point x="-89174" y="102676"/>
+				<point x="-89118" y="102890"/>
+			</points>
+		</poly>
+		<poly>
+			<points>
+				<point x="-87916" y="103050"/>
+				<point x="-87848" y="103077"/>
+				<point x="-87781" y="103319"/>
+				<point x="-87971" y="103216"/>
+			</points>
+		</poly>
+		<poly>
+			<points>
+				<point x="-88331" y="103461"/>
+				<point x="-88299" y="103509"/>
+				<point x="-88121" y="103485"/>
+				<point x="-88149" y="103406"/>
+			</points>
+		</poly>
+		<poly>
+			<points>
+				<point x="-88751" y="103252"/>
+				<point x="-88592" y="103394"/>
+				<point x="-88624" y="103438"/>
+				<point x="-88790" y="103295"/>
+			</points>
+		</poly>
+		<poly>
+			<points>
+				<point x="-88329" y="104992"/>
+				<point x="-88332" y="105351"/>
+				<point x="-88636" y="105352"/>
+				<point x="-88631" y="104991"/>
+			</points>
+		</poly>
+	</InternalPolies>
+</zone>

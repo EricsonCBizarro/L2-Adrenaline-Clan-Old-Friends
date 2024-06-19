@@ -1,0 +1,24 @@
+uses sysutils;
+
+function PluginProc(Code: Cardinal; p1, p2, p3: WideString): WideString; stdcall;
+begin
+  case code of
+    0: result := user.name;
+    1: Engine.DMoveTo(StrToInt(p1), StrToInt(p2), user.z);
+    2: Engine.Msg('Bot', p1, StrToInt(p2));
+    3: Result := IntToStr(User.X);
+    4: Result := IntToStr(User.Y);
+    5: Result := IntToStr(1);
+    6: Result := User.Name;
+  end;  
+end; 
+
+procedure StartPlugins;
+begin
+  Script.StartPlugin(Script.Path + 'plugin.dll', @PluginProc, True{модально});  
+end;
+
+begin
+  Script.MainProc(@StartPlugins);
+  Delay(-1);
+end.

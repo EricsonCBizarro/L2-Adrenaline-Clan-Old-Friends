@@ -1,0 +1,20 @@
+unit TBuff;
+
+interface
+
+implementation
+
+procedure TScheme1;
+begin
+  Engine.BypassToServer('_bbshome');
+  delay(1000);
+  Engine.BypassToServer('_bbsgetfav');
+  delay(1000);
+  Engine.BypassToServer('01');
+  delay(1000);
+  Engine.BypassToServer('010');
+  Print('Buff TScheme1');
+  delay(1000);
+end;
+
+end.

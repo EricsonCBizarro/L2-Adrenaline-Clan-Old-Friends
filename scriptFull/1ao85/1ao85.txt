@@ -1,0 +1,21 @@
+ {
+--------------------------------------------------------------------------------
+Script to get to level 85 in Hive Five
+--------------------------------------------------------------------------------
+}
+
+BEGIN
+var
+  Newbie_Helper: TL2Live = 30530;
+  Gremlin: TL2Live = 18342;
+  
+  Engine.SetTarget (Newbie_Helper);
+  Engine.DlgOpen;
+  Engine.DlgSel (1);
+  Print ('Kill Gremlins to obtain Soulshots');
+  while  User.Level < 3 do
+  begin
+    Engine.SetTarget (Gremlin);
+    Delay (
+  end;
+END.

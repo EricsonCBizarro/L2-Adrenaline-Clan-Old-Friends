@@ -1,0 +1,19 @@
+unit TBuff;
+
+interface
+
+implementation
+
+procedure TScheme1;
+begin
+  Engine.BypassToServer('_bbshome');
+  delay(1000);
+  Engine.BypassToServer('_bbsfile:bbs_npcs');
+  delay(1000);
+  Engine.BypassToServer('_bbsbuffer');
+  delay(1000);
+  Engine.BypassToServer('_bbsbufferbypass_cast 331 x x');
+  delay(1000);
+end;
+
+end.

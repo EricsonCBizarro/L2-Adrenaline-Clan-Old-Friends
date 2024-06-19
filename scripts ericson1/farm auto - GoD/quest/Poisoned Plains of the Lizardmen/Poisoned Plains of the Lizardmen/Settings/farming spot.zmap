@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<zone>
+	<ExternalPoly>
+		<points>
+			<point x="94124" y="81350"/>
+			<point x="93087" y="81417"/>
+			<point x="93094" y="81760"/>
+			<point x="90803" y="81715"/>
+			<point x="89554" y="82293"/>
+			<point x="88985" y="81160"/>
+			<point x="89253" y="78708"/>
+			<point x="90540" y="77140"/>
+			<point x="92965" y="76510"/>
+			<point x="93915" y="78141"/>
+			<point x="94378" y="79514"/>
+			<point x="94825" y="79984"/>
+			<point x="94609" y="80872"/>
+		</points>
+	</ExternalPoly>
+	<InternalPolies>
+		<poly>
+			<points>
+				<point x="92834" y="79990"/>
+				<point x="92890" y="79986"/>
+				<point x="92906" y="80034"/>
+				<point x="92834" y="80062"/>
+			</points>
+		</poly>
+		<poly>
+			<points>
+				<point x="92058" y="80294"/>
+				<point x="92026" y="80358"/>
+				<point x="91958" y="80306"/>
+				<point x="92014" y="80250"/>
+			</points>
+		</poly>
+		<poly>
+			<points>
+				<point x="91110" y="80294"/>
+				<point x="91058" y="80318"/>
+				<point x="91066" y="80254"/>
+			</points>
+		</poly>
+		<poly>
+			<points>
+				<point x="91186" y="79518"/>
+				<point x="91226" y="79462"/>
+				<point x="91170" y="79434"/>
+				<point x="91134" y="79482"/>
+			</points>
+		</poly>
+		<poly>
+			<points>
+				<point x="90642" y="78730"/>
+				<point x="90550" y="78582"/>
+				<point x="90714" y="78498"/>
+				<point x="90798" y="78650"/>
+			</points>
+		</poly>
+		<poly>
+			<points>
+				<point x="90482" y="79730"/>
+				<point x="90406" y="79730"/>
+				<point x="90446" y="79654"/>
+			</points>
+		</poly>
+		<poly>
+			<points>
+				<point x="91862" y="79170"/>
+				<point x="91914" y="79118"/>
+				<point x="91954" y="79186"/>
+				<point x="91902" y="79226"/>
+			</points>
+		</poly>
+		<poly>
+			<points>
+				<point x="92118" y="78570"/>
+				<point x="92090" y="78502"/>
+				<point x="92166" y="78522"/>
+			</points>
+		</poly>
+	</InternalPolies>
+</zone>

@@ -1,0 +1,12 @@
+var
+item: TL2Item;
+
+begin
+while true do begin
+delay(500);
+
+if inventory.user.byid(10771, item) and not (Item.Equipped) then begin
+Delay(500);
+Engine.UseItem(10771); <<< Replace with ur weapon id
+Delay(800);
+end;

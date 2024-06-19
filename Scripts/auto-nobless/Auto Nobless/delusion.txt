@@ -1,0 +1,30 @@
+begin
+while delay(2000) do begin
+   Delay(500);
+   Engine.EnterText('#==================');
+    if user.inrange(-121425, -220085, -6720, 1250, 1500) then begin
+        Engine.EnterText('#estamos na sala do boss :D')
+    end;
+    if user.inrange(-114610, -151288, -6710, 1250, 1500) then begin
+        Engine.EnterText('#estamos na sala inicial');
+        Delay(100);
+        Engine.EnterText('/target Guardian of Eastern Seal');
+        Delay(100);
+        Engine.DlgOpen;
+        Delay(100);
+        Delay(100);
+        Engine.DlgSel(1); 
+    end;
+    if not user.inrange(-121425, -220085, -6720, 1250, 1500) or user.inrange(-114610, -151288, -6710, 1250, 150) then begin      
+       if not user.inrange(-114610, -151288, -6710, 1250, 1500) then begin
+        Engine.EnterText('#esta não é a sala do boss :X');
+        Delay(100);
+        Engine.EnterText('/target Delusion Manager');
+        Delay(100);
+        Engine.DlgOpen;
+        Delay(100);
+        Engine.DlgSel(1);  
+       end;       
+     end;
+    end; 
+end.

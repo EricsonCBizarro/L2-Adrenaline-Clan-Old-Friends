@@ -1,0 +1,11 @@
+unit TLoadZMap;
+
+interface
+
+uses SysUtils;
+
+procedure LoadZMapElvenVilageQuestCollectingSpores;
+begin
+  Engine.LoadConfig('ElvenVilageCollectingSpores');
+  Delay(500);
+end;

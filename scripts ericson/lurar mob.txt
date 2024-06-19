@@ -1,0 +1,5 @@
+Engine.FaceControl(0, false);
+Engine.MoveTo(x1, y1, z1);       <- spot where you wanna lure the mob
+Engine.UseSkill(xxx);                 <- optional. xxx = aggro skill or something
+Engine.MoveTo(x2, y2, z2);     <- spot where you wanna kill the mob
+Engine.FaceControl(0, true);

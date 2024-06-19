@@ -1,0 +1,75 @@
+  function SetForegroundWindow(hwnd: integer) : Boolean; stdcall;
+    external 'user32.dll';
+ 
+    function captcha:boolean; begin
+             if engine.dlgtext.contains('Refresh') or
+             engine.dlgtext.contains('Captcha') or
+             engine.dlgtext.contains('60 seconds') or
+             engine.dlgtext.contains('Bot')   then begin
+       SetForegroundWindow(Engine.GameWindow);             
+      PlaySound(exepath+'\sounds\'+'PlayerAlarm'+'.wav');
+      delay(500);  
+      StopSound;
+          end;   
+  end;
+ 
+    var tep1,levdoc:cardinal;
+	item:tl2item;
+	//config  
+begin
+tep1	:= 0;		// do not change
+levdoc	:= 55;		//lvl u need to get
+	//end of config
+	
+	
+	engine.facecontrol(0, true);
+	
+  while true do begin
+  
+   captcha();
+   delay(1000);
+   if (User.Level=levdoc) then begin
+   // if level done
+   while (tep1=0) do begin
+   delay(60000);
+    Print('lvl done!'); 
+	end;
+   end else begin
+   //else lvl not done
+   
+   while (tep1=0) do begin
+   delay(1000);
+   //if in town
+   if user.InRange(107552, 218000, -3656,10000) then begin
+   tep1 := 1;
+   end;
+   end;
+   tep1 := 0;
+   
+   engine.facecontrol(0, false);
+   
+   
+   //start tp to mob
+	Engine.BypassToServer('_bbshome', True);
+	delay(1000);
+	Engine.BypassToServer('02', True);
+	delay(1000);
+	Engine.BypassToServer('0a', True);
+	delay(1000);
+	Engine.BypassToServer('021', True);
+	delay(1000);
+    Engine.BypassToServer('0d', True);
+	delay(1000);
+  //if on spot
+   if user.InRange(82181, 226226, -3632,10000) then begin
+   engine.facecontrol(0, true);
+   end;
+   
+   
+   
+   
+   end;
+   
+   
+end;
+end.

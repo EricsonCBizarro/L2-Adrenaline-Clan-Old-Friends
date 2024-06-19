@@ -1,0 +1,18 @@
+Flame Icon -        785	       spirit of phoenix -    784    use - 5562
+Spirit of Shilen -  789         -    788	  use - 5564
+
+para mandar email
+engine.sendmail('calvo', 'theme','text', [57, 1]); //57 adena id, 1 count
+ Engine.SendMail ('recipient', 'subject', '', [id1,count1, id2,count2, id3,count3]);
+
+
+_bbshome
+_bbsbuffer
+_bbscastgroupbuff X Player
+
+
+TL2Item
+TInventory
+
+Inventory.Quest.ByID(itemID, item)
+Inventory.User.ByID(itemID, item)

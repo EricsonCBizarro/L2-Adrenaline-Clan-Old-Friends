@@ -1,0 +1,29 @@
+  var item:tl2item;
+begin
+while true do begin
+delay(1000);
+    if not inventory.user.byid(728, item) or (item.count<1) then begin // (iditem, item) logo após (item.cound<xxx) quantidade do item
+      Engine.SetTarget(13270); // (id do npc)
+      Engine.DlgOpen;
+      Engine.DlgSel(6); // (qual opção de janela do npc escolher)
+      Engine.NPCExchange(728, 10); // (iditem, quandidade)
+      Print('OK');
+      delay(1000);
+end;
+end;
+end.
+
+
+//   if not inventory.user.byid(728, item) or (item.count<100) then begin // (iditem, item) logo após (item.cound<xxx) quantidade do item
+  Engine.bypasstoserver('_bbshome');
+      Delay(1000);
+      Engine.bypasstoserver('_bbsgetfav');
+      Delay(1000);
+      Engine.bypasstoserver('_bbsfile:smallNpcs/gmshop');
+      Delay(1000);
+      Engine.bypasstoserver('115');
+      Delay(1000);
+      Engine.NPCExchange(728, 1000); // (iditem, quandidade)
+      Print('OK');
+      delay(1000);
+end;

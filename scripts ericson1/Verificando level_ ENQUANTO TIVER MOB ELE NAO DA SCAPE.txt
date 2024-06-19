@@ -1,0 +1,37 @@
+begin
+  if user.level<15 then begin
+    engine.autosoulshot(5789, true);
+    engine.autotarget(2500);
+    engine.attack;
+    engine.pickup;
+  end;
+  if (user.target.dead) then begin
+    while user.incombat do
+    delay(1000);
+    engine.autosoulshot(5789, true);
+    engine.autotarget(2500);
+    engine.attack;
+    engine.pickup;
+  end;
+    engine.useitem(12753);
+    delay(20000)
+end.
+
+
+// AGRO MOB
+/* var AggroMobs:integer; 
+
+function MobsAttacking : integer; //??????? ????? ??? ????????
+var i, n: Integer;
+begin
+n := 0;
+AggroMobs:=0;
+for i := 0 to NpcList.Count - 1 do
+if (NpcList.Items(i).Target = User) and not NpcList.Items(i).Dead then inc(n);
+AggroMobs:= n;
+Result := n;
+end;
+
+begin
+print(MobsAttacking);
+end.

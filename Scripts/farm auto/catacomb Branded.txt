@@ -1,0 +1,87 @@
+var Figth_Flag:boolean;
+     Item: TL2Item;
+     Npc: TL2Npc;
+     Obj: TL2Buff;
+     IdBuff: integer;
+     Buffs:TL2Buff;
+var L2Skill: TL2Skill;
+
+
+procedure toVillage;
+begin
+  Delay(100);
+    if (User.HP=0) then
+      begin
+       Delay(2000);
+       Engine.GoHome;
+       Engine.Facecontrol(0,False);
+       Buff;
+      end;
+end;
+
+
+// rebuffa - isso muda conforme o server
+procedure buff;
+begin
+    Delay (10000);
+    Engine.BypassToServer('_bbshome');
+    delay(300);
+    Engine.BypassToServer('_bbsbuffer');
+    delay(300);
+    Engine.BypassToServer('_bbsbufferbypass_giveBuffSet figher 0 0');
+   RunTo;
+end;
+
+procedure RunTo;
+begin
+     Engine.BypassToServer('_bbshome');
+     delay(300);
+     Engine.BypassToServer('_bbsgk');
+     delay(300);
+     Engine.BypassToServer('_bbsgk:page:other');
+     delay(300);
+     Engine.BypassToServer('_bbsgk:page:Catacombs');
+     delay(300);
+     Engine.BypassToServer('_bbsteleport:id:306');
+     Fight;
+end;
+
+
+procedure toBuff;
+  begin
+  IdBuff:= 1323 ; //Check BUFF
+   while not User.Buffs.ById(IdBuff,obj) do begin
+        Print('Sem Nobles');
+        Engine.UseItem(736);  //Scroll Escape
+        Delay(20000);
+        Engine.Facecontrol(0,False);
+        buff;
+   end;
+end;
+
+
+procedure Fight;
+   begin
+   Print('Fight zone');
+    Engine.MoveTo(47320, 170280, -4976);
+    Print('Primeira Zona');
+    Delay(1000);
+    Engine.MoveTo(47336, 171544, -4976);
+    Print('Segunda Zona');
+    Engine.LoadConfig('Green');    //COLOCA NOME DO CHAR AQUI
+    Engine.LoadZone('Drakosprimeirasubida.zmap');   //NOME DA ZONA DO MAPA AQUI
+    Print('FEITO!');
+    toVillage;
+    Engine.Facecontrol(0,True);
+end;
+
+
+//-----------------------------------------------------------------------------
+begin    //repete novamente o script
+Print('repete novamente');
+  repeat
+   toBuff;
+   toVillage;
+  until Engine.Status = lsOffline;
+  Delay(5000);
+end.

@@ -1,0 +1,17 @@
+ 
+procedure SendMoney(const receiver: string);
+var adena: Integer;
+begin
+   adena := CheckItem(ADENAID) - 1100;
+   
+   if adena > 100000 then begin          // ???? ?????? 100? ????????.
+      Engine.SendMail(receiver, 'AchYle, '', [ADENAID, QUANTIDADEDEadena]); 
+      Engine.MSG('MAIL', 'Sent: ' + adena.toString + ' adena.', 32768);
+   end;
+end;
+ 
+begin
+ 
+   SendMoney('AchYle'); // NO AchYle COLOCA O NOME DO CHAR E TROCA LA ENCIMA EM AchYle
+ 
+end;

@@ -1,0 +1,20 @@
+var item: tl2item;
+    i,j: integer;
+    character: TL2Char;
+    ch: string = chatmessage.sender;
+    char:TL2char;
+
+procedure waitpm;
+begin
+  if ((ChatMessage.Text = 'cc') and ChatMessage.Unread and (ChatMessage.ChatType = ctPrivate)) then begin
+   engine.SetTarget(chatmessage.sender);
+   engine.useskill(1403);
+  end;
+ end;
+
+begin
+  while delay(500) do begin
+    waitpm;
+    for j:= 0 to charlist.Count-1 do if charlist(j).name = chatmessage.sender then character:= charlist(j); // For refreshing PM sender's location.
+  end;
+end.

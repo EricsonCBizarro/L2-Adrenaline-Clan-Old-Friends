@@ -1,0 +1,9 @@
+begin
+Engine.BypassToServer('_bbshome');
+delay(300);
+Engine.BypassToServer('_bbsGatekeeper');
+delay(300);
+Engine.BypassToServer('_bbsGatekeeper TownZones-Giran');
+delay(300);
+Engine.BypassToServer('_bbsTeleport 73096 118328 -3704');
+end.

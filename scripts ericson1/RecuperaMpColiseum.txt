@@ -1,0 +1,35 @@
+var Figth_Flag:boolean;
+     Item: TL2Item;
+     Npc: TL2Npc;
+     Obj: TL2Buff;
+     IdBuff: integer;
+     Buffs:TL2Buff;
+var L2Skill: TL2Skill;
+
+procedure precisaRecuperarMP;
+begin
+  Delay(100);
+    if (User.MP<200) then
+      begin
+       falarNPCRecuperarMP;
+      end;
+end;
+
+procedure falarNPCRecuperarMP;
+begin
+     Print('Go Recuperar MP');
+     Engine.SetTarget('Arena Director');  //Target do NCP Arena Director
+     Delay(500);
+     Engine.DlgOpen; // abre chat combat npc
+     Delay(500);
+     Engine.DlgSel(3);
+end;
+
+
+begin    //repete novamente o script
+Print('repete novamente');
+  repeat
+   precisaRecuperarMP;
+   until Engine.Status = lsOffline;
+  Delay(500);
+end.

@@ -1,0 +1,10 @@
+var action:tl2action;
+    p1,p2:pointer;
+begin
+  while true do begin
+    engine.waitaction([lakey], p1, p2);
+    if cardinal(p1) = $11 then begin   //ctrl
+    print('qqqqqq');
+    end;
+  end;
+end.

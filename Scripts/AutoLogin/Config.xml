@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Config>
+  <lvItems>
+    <Items Count="1">
+      <0 Caption="bot001" Checked="-1" SubItems="4991419\0\\C:/Program Files (x86)/NCsoft/Lineage II/system/L2.exe\"/>
+    </Items>
+  </lvItems>
+  <edtLoginWait>
+    <Text>5</Text>
+  </edtLoginWait>
+  <edtTimeout>
+    <Text>180</Text>
+  </edtTimeout>
+  <CBFirstTimeStartGame>
+    <Checked>1</Checked>
+  </CBFirstTimeStartGame>
+  <CBRestartGameNoActions>
+    <Checked>1</Checked>
+  </CBRestartGameNoActions>
+  <CBLoginInHidden>
+    <Checked>1</Checked>
+  </CBLoginInHidden>
+  <edtGamePath>
+    <Text>C:\Program Files (x86)\NCsoft\Lineage II\system\L2.exe</Text>
+  </edtGamePath>
+  <edtPinCode>
+    <Text/>
+  </edtPinCode>
+  <edtPassword>
+    <Text>4991419</Text>
+  </edtPassword>
+  <edtLogin>
+    <Text>bot001</Text>
+  </edtLogin>
+  <cbbCharNumber>
+    <ItemIndex>0</ItemIndex>
+    <Text>1</Text>
+    <Items>
+      <text>1\2\3\4\5\6\7\</text>
+    </Items>
+  </cbbCharNumber>
+  <CBUseCustomStyle>
+    <Checked>1</Checked>
+  </CBUseCustomStyle>
+  <cbbNickNames>
+    <ItemIndex>-1</ItemIndex>
+    <Text>Config</Text>
+    <Items>
+      <text/>
+    </Items>
+  </cbbNickNames>
+  <edtScriptKey>
+    <Text/>
+  </edtScriptKey>
+</Config>

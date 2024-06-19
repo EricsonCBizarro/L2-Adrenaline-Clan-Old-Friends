@@ -1,0 +1,57 @@
+var
+Item: TL2Item;
+SetCursorPos: TPoint;
+
+function keybd_event (bVk, bScan: byte; dwFlags, dwExtraInfo: integer): integer ; stdcall; external
+ 'user32.dll'; 
+function SetCursorPos (x, y: integer): boolean; stdcall; external 'user32.dll'; 
+function mouse_event (dwFlags, dx, dy, dwData: byte; dwExtraInfo: integer): void; stdcall; external 
+'user32.dll';
+ 
+procedure pressKey (hexCode: BYTE); 
+begin   
+keybd_event (hexCode, 45, 1, 0);   
+delay (200); 
+end; 
+
+procedure mouseClick (x, y, _delay: integer); 
+begin   
+SetCursorPos (x, y);   
+mouse_event ($2, 0, 0, 0, 0);   
+delay (_delay);   
+mouse_event (4, 0, 0, 0, 0); 
+end; 
+
+procedure mouseDown (x, y, _delay: integer ); 
+begin   
+SetCursorPos (x, y);   
+mouse_event( MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0 );
+end; 
+
+procedure mouseUp ( x, y, _delay: integer); 
+begin   
+SetCursorPos (x, y);   
+// mouse_event ($ 2, 0, 0, 0, 0);   
+// delay (_delay);   
+mouse_event ($4, 0, 0, 0, 0 );
+end;
+
+
+begin
+
+while true do begin
+delay(500);
+ 
+if inventory.user.byid(15593, item) and not (Item.EnchantLevel > 21 ) then begin
+Delay(500);
+Engine.UseItem (960);//'scroll: enchant armor s grade'
+Delay(100);
+mouseDown (1104, 294, 1000);
+delay (300);      
+mouseUp (707, 426, 1000); 
+delay (300);      
+mouseClick (628, 541, 500);
+Delay(3000);
+end;
+end;
+end.

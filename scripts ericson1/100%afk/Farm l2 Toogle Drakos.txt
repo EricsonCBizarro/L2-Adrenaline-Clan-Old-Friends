@@ -1,0 +1,135 @@
+var Figth_Flag:boolean;
+     Item: TL2Item;
+     Npc: TL2Npc;
+     Obj: TL2Buff;
+     IdBuff: integer;
+     Buffs:TL2Buff;
+var L2Skill: TL2Skill;
+
+
+procedure toVillage;
+begin
+  Delay(100);
+    if (User.HP=0) then
+      begin
+       Print('To Village');
+       Delay(5000);
+       Engine.GoHome;
+       Engine.Facecontrol(0,False);
+       Local;
+      end;
+end;
+
+
+procedure buff;
+begin
+    Delay (10000);
+  Engine.BypassToServer('_bbshome');
+  delay(1000);
+  Engine.BypassToServer('11');
+  delay(1000);
+  Engine.BypassToServer('18');
+  delay(1000);
+  Engine.BypassToServer('15');
+   RunTo;
+end;
+
+procedure RunTo;
+begin
+     Print('Go Teleporte');
+     Engine.SetTarget('Esmeralda');  //Target do NCP GK
+     Delay(1500);
+	   Engine.SetTarget('Esmeralda');  //Target do NCP GK
+     Delay(1500);
+     Engine.DlgOpen; // abre chat combat npc
+     Delay(1500);
+     Engine.DlgSel(1);
+     Delay(1500);
+     Engine.DlgSel(7);
+     Delay(1500);
+     Engine.DlgSel(1);
+     Delay(1500);
+     Fight;
+end;
+
+
+procedure toBuff;
+  begin
+  IdBuff:=1413 ;  //Chant of Magnus
+   while not User.Buffs.ById(IdBuff,obj) do begin
+        Print('Check Buff');
+        Engine.UseItem(736);  //Scroll Escape
+        Delay(20000);
+        Engine.Facecontrol(0,False);
+        Local;
+   end;
+end;
+
+
+procedure Fight;
+   begin
+   Print('Fight zone');
+    Engine.MoveTo(73929, 117680, -3758);
+    Delay(500);
+    Engine.MoveTo(75406, 117484, -3754);
+    Delay(500);
+    Engine.MoveTo(78912, 116733, -3763);
+    Delay(500);
+	  Engine.MoveTo(81215, 116569, -3361);
+    Delay(500);
+    Engine.MoveTo(83172, 117698, -3030);
+    Delay(500);
+    Engine.LoadConfig('WindZin');    //Íàçâàíèå Âàøåãî êîíôèãà
+    Engine.LoadZone('DrakosOldSchoollScript.zmap');   //zona de combat
+    Print('UP');
+    toVillage;
+    Engine.Facecontrol(0,True);
+end;
+
+procedure Local;
+	begin
+	Print('Vereficando o local de respal');
+if user.inrange(116725, 75693, -2728, 250, 150) then begin   //resp 1
+	Engine.MoveTo(117104, 76776, -2696);
+end;
+
+if user.inrange(116165, 77470, -2704, 250, 150) then begin   //resp 2
+	Engine.MoveTo(117104, 76776, -2696);
+end;	
+
+if user.inrange(117135, 78970, -2256, 250, 150) then begin   //resp 3
+	Engine.MoveTo(119789, 76630, -2272);
+	Engine.MoveTo(118057, 76142, -2688);
+	Engine.MoveTo(117104, 76776, -2696);
+end;	
+
+if user.inrange(117283, 76384, -2704, 250, 150) then begin   //resp 4
+	Engine.MoveTo(117104, 76776, -2696);
+end;	
+
+if user.inrange(117283, 76384, -2704, 250, 150) then begin   //resp 5
+	Engine.MoveTo(117104, 76776, -2696);
+end;	
+
+if user.inrange(117645, 78960, -2256, 250, 150) then begin   //resp 6
+	Engine.MoveTo(116961, 78916, -2256);
+	Engine.MoveTo(116312, 77844, -2672);
+	Engine.MoveTo(117104, 76776, -2696);
+end;
+
+if user.inrange(115676, 77593, -2704, 250, 150) then begin   //resp 5
+	Engine.MoveTo(117104, 76776, -2696);
+end;
+
+	buff;
+end;
+ 
+//-----------------------------------------------------------------------------
+begin    //repete novamente o script
+Print('repete novamente');
+  repeat
+   toVillage;
+   toBuff;  
+  until Engine.Status = lsOffline;
+  Delay(5000);
+end.

@@ -1,0 +1,41 @@
+begin
+  Engine.SetTarget(30351);                                    ////Astaron
+  Engine.DlgOpen;
+  Engine.DlgSel('Quest');
+  Delay(500);
+  Engine.DlgSel('Say you will help');
+  Delay(500);
+  Engine.MoveTo(12616, 16540, -4610);
+  Engine.MoveTo(12159, 16658, -4610);
+  Engine.SetTarget(30600);                                      ///Newbie Helper
+  Engine.DlgOpen;
+  Engine.DlgSel('Receive help from beneficial magic');
+  Delay(500);
+Engine.CancelTarget;
+Engine.MoveTo(11384, 16781, -4688);
+  Engine.MoveTo(10284, 16988, -4610);
+  Engine.MoveTo(9704, 15568, -4601);
+Delay(500);
+Engine.SetTarget(30134);
+Delay(500);
+Engine.DlgOpen;
+Delay(500);
+Engine.DlgSel('Teleport');
+Delay(500);
+Engine.DlgSel('Spider Nest');
+Delay(500);
+Engine.CancelTarget;
+if  (Inventory.Quest.ByID(1077,  QuestItem) = true) and (Item.Count < 10) then begin
+Engine.FaceControl(0,true);
+end;
+if  (Inventory.Quest.ByID(1077, QuestItem) = true) and (Item.Count = 10) then begin
+Engine.FaceControl(0,false);
+end;
+Engine.UseItem(736);
+Delay(500);
+Engine.MoveTo(11374, 16802, -4688);
+  Engine.MoveTo(12836, 16434, -4610);
+  Engine.MoveTo(12354, 15008, -4601);
+  Engine.SetTarget(30351);
+  Engine.DlgSel('Quest');
+end.?

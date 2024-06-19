@@ -1,0 +1,16 @@
+uses SysUtils, Classes;
+var A:TStringList;
+
+begin   
+  while  Engine.Status = lsOnline  do
+  begin
+    if  Engine.dlgtext then begin
+      Print('repete novamente');
+      A := TStringList.create;
+      A.Text := Engine.DlgText;
+      A.SaveToFile(Script.Path + 'DlgText.txt');
+      A.Free;
+    end;
+    Delay (30*1000);
+  end;
+end.
